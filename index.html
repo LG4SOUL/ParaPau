@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Amor por Ti</title>
+    <!-- Enlaza el archivo de estilos CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Agrega la etiqueta de audio aquí -->
+    <!-- Reemplaza 'Quién iba a pensar, mi vida, que en este.mp3' con el nombre real de tu archivo de audio -->
+    <!-- 'loop' para que se repita. 'autoplay' se gestiona con JavaScript debido a restricciones del navegador. -->
+    <audio id="background-music" loop>
+        <source src="Quién iba a pensar, mi vida, que en este.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- Pantalla de bienvenida para iniciar la música -->
+    <div id="welcome-overlay">
+        <p>Haz clic para iniciar</p>
+        <p>¡y sentir el amor!</p>
+    </div>
+
+    <div class="love-card" id="love-card-main">
+        <!-- Contenedor izquierdo para el mensaje de amor -->
+        <div class="text-content">
+            <p class="to-whom">Para el amor de mi vida:</p>
+            <div class="main-message">
+                <p>Si pudiera elegir un lugar seguro, sería tu lado.</p>
+                <p>Cuanto más tiempo estoy contigo más te amo.</p>
+                <p>Este texto es solo un ejemplo de demostración y no refleja sentimientos reales.</p>
+                <p>&mdash; I Love You!</p>
+            </div>
+            <!-- Línea divisoria y contador de tiempo -->
+            <div class="time-counter-section">
+                <hr class="separator-line">
+                <p class="start-text">Mi amor por ti comenzó hace...</p>
+                <p class="time-display">
+                    <span id="days">0</span> días
+                    <span id="hours">0</span> horas
+                    <span id="minutes">0</span> minutos
+                    <span id="seconds">0</span> segundos
+                </p>
+            </div>
+        </div>
+
+        <!-- Contenedor derecho para el árbol -->
+        <div class="tree-container">
+            <div class="trunk"></div>
+            <!-- Nuevo contenedor para los corazones generados por JS -->
+            <div id="heart-leaves-container" class="leaves"></div>
+        </div>
+
+        <!-- Los corazones desprendiéndose ahora se generarán dinámicamente con JavaScript -->
+
+    </div>
+
+    <!-- Enlaza el archivo JavaScript de generación de corazones (ahora también gestiona los que caen) -->
+    <script src="heart-generator.js"></script>
+    <!-- Enlaza el archivo JavaScript principal para el contador y el control de audio -->
+    <script src="script.js"></script>
+</body>
+</html>
