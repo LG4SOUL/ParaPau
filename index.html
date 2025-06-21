@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Amor por Ti</title>
+    <!-- Enlaza el archivo de estilos CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Agrega la etiqueta de audio aquí -->
+    <!-- Reemplaza 'Quién iba a pensar, mi vida, que en este.mp3' con el nombre real de tu archivo de audio -->
+    <!-- 'loop' para que se repita. 'autoplay' se gestiona con JavaScript debido a restricciones del navegador. -->
+    <audio id="background-music" loop>
+        <source src="Quién iba a pensar, mi vida, que en este.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- Pantalla de bienvenida para iniciar la música -->
+    <div id="welcome-overlay">
+        <p>La verdad que flojera fingir que no me desvivo por ti...</p>
+        <p>¡Dale clic pa´arrancar, preciosa...!</p>
+    </div>
+
+    <div class="love-card" id="love-card-main">
+        <!-- Contenedor izquierdo para el mensaje de amor -->
+        <div class="text-content">
+            <p class="to-whom">Para el amor de mis días, de mi vida, de mi alma:</p>
+            <div class="main-message">
+                <p>Tienes los únicos ojos en todo el universo que me descontrolan la vida.</p>
+                <p>Me quedaría una eternidad completa solo para apreciar esos ojos tan hermosos que tienes.</p>
+                <p>si me preguntas cuántas veces viniste a mi mente, diria solo una vez, porque llegaste y nunca te fuiste.</p>
+                <p>&mdash; Te amo, para toda la eternidad!</p>
+            </div>
+            <!-- Línea divisoria y contador de tiempo -->
+            <div class="time-counter-section">
+                <hr class="separator-line">
+                <p class="start-text">Nuestra historia comenzó desde...</p>
+                <p class="time-display">
+                    <span id="days">0</span> días
+                    <span id="hours">0</span> horas
+                    <span id="minutes">0</span> minutos
+                    <span id="seconds">0</span> segundos
+		<p class="start-text">De nadie seré, solo de ti,...</p>
+		<p>Hasta que mis huesos se vuelvan cenizas, y mi corazón deje de latir.</p>
+                </p>
+            </div>
+        </div>
+
+        <!-- Contenedor derecho para el árbol -->
+        <div class="tree-container">
+            <div class="trunk"></div>
+            <!-- Nuevo contenedor para los corazones generados por JS -->
+            <div id="heart-leaves-container" class="leaves"></div>
+        </div>
+
+        <!-- Los corazones desprendiéndose ahora se generarán dinámicamente con JavaScript -->
+
+    </div>
+
+    <!-- Enlaza el archivo JavaScript de generación de corazones (ahora también gestiona los que caen) -->
+    <script src="heart-generator.js"></script>
+    <!-- Enlaza el archivo JavaScript principal para el contador y el control de audio -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,352 @@
+/* Importa la fuente 'Dancing Script' que es cursiva, clara y tiene opciones de negrita */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap'); /* Importa regular y bold */
+
+/* Asegura que html y body ocupen toda la altura disponible para el cálculo de vh */
+html, body {
+    height: 100%; 
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    /* Fondo del body: degradado lila suave */
+    background: linear-gradient(to bottom, #E6E6FA, #F0F8FF); /* Lavender (lila claro) a AliceBlue (casi blanco-azul) */
+    
+    font-family: 'Dancing Script', cursive; /* APLICA LA FUENTE A TODO EL TEXTO */
+    font-weight: 700; /* APLICA NEGRITAS A TODO EL TEXTO DEL BODY POR DEFECTO */
+    overflow: hidden; /* Evita barras de desplazamiento */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ocupa el 100% del alto de la ventana */
+    color: #5C4033; /* Color de texto oscuro */
+    font-size: 22px; /* Tamaño de fuente base */
+    line-height: 1.6;
+    position: relative; /* Para el overlay */
+}
+
+/* Estilos para la pantalla de bienvenida */
+#welcome-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro semi-transparente */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    font-weight: 700; /* Negritas para el texto del overlay */
+    cursor: pointer;
+    z-index: 1000; /* Asegura que esté por encima de todo */
+    opacity: 1;
+    transition: opacity 0.5s ease-out; /* Transición suave al desaparecer */
+}
+
+#welcome-overlay.hidden {
+    opacity: 0;
+    pointer-events: none; /* Deshabilita interacciones una vez oculto */
+}
+
+
+.love-card {
+    display: flex; /* Ahora los elementos hijos se organizarán en fila */
+    flex-direction: row; /* Para que el texto esté a la izquierda y el árbol a la derecha */
+    align-items: center; /* Centra verticalmente los elementos en la fila */
+    padding: 30px;
+    /* La imagen de fondo ahora está aquí */
+    background-image: url('DSC01244.jpg'); /* Ruta a la imagen */
+    background-size: cover; /* La imagen cubrirá todo el contenedor, pudiendo recortarse */
+    background-position: center bottom; /* Posiciona al fondo para mostrar la mano y el anillo. Puedes ajustar el 'bottom' por un porcentaje como 'center 85%' si el anillo se corta. */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: scroll; /* Cambiado a scroll para mejor compatibilidad en móviles (Safari de iPhone) */
+    
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+    max-width: 900px; /* Ancho máximo para la tarjeta */
+    width: 90%; /* Ancho responsivo */
+    box-sizing: border-box;
+    position: relative; /* ESENCIAL para que el contenido de la tarjeta se mantenga y para z-index */
+    z-index: 1; /* Asegura que el contenido esté por encima del overlay */
+    overflow: visible; /* ¡Importante! Permite que los corazones fixed caigan fuera de los límites de la tarjeta */
+}
+
+/* Overlay para la imagen de fondo de la tarjeta */
+.love-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.4); /* Velo semi-transparente blanco */
+    border-radius: 15px; /* Coincide con el border-radius de .love-card */
+    z-index: -1; /* Coloca el overlay detrás del contenido de la tarjeta */
+}
+
+
+/* Contenido de texto a la izquierda */
+.text-content {
+    flex: 1; /* Ocupa el espacio disponible */
+    padding-right: 40px; /* Espacio entre el texto y el árbol */
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribuye el contenido verticalmente */
+    height: 100%; /* Ocupa todo el alto disponible en el contenedor flex */
+    min-width: 300px; /* Ancho mínimo para el texto */
+}
+
+.to-whom {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    color: #8A2BE2; /* Un lila un poco más oscuro */
+    font-weight: 700; /* Negritas para este elemento específico */
+}
+
+.main-message p {
+    margin: 10px 0;
+}
+
+.time-counter-section {
+    margin-top: 30px; /* Espacio superior para separar del mensaje principal */
+    width: 100%; /* Ocupa todo el ancho disponible */
+}
+
+.separator-line {
+    border: none;
+    border-top: 2px solid #5C4033; /* Línea de separación */
+    margin: 15px 0;
+}
+
+.start-text {
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+.time-display span {
+    font-weight: 700; /* Negritas para los números */
+    color: #E74C3C; /* Rojo vibrante */
+    font-size: 1.3em; /* Un poco más grande para los números */
+}
+
+/* Estilos del árbol (lado derecho) */
+.tree-container {
+    flex: 1; /* Ocupa el espacio disponible */
+    position: relative;
+    width: 350px; /* Ancho del árbol */
+    height: 400px; /* Alto del árbol */
+    margin: 0; /* Eliminar margen */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /* Ajustar posición para que quede más a la derecha como en la imagen */
+    margin-left: auto; /* Empuja el árbol a la derecha */
+}
+
+.trunk {
+    width: 60px; /* Tronco más grueso */
+    height: 120px; /* Tronco más alto */
+    background-color: #3D5C40; /* Verde oliva ajustado para la imagen */
+    border-radius: 15px 15px 0 0;
+    position: absolute;
+    bottom: 0;
+    /* Animación para que el tronco surja desde abajo */
+    transform: translateY(100%);
+    opacity: 0;
+    animation: emergeTrunk 1s forwards;
+    animation-delay: 0.5s;
+}
+
+.leaves {
+    position: absolute;
+    bottom: 100px; /* Posiciona las hojas sobre el tronco */
+    width: 300px; /* Ancho del área de las hojas para una forma más grande */
+    height: 280px; /* Alto del área de las hojas */
+    background-color: transparent;
+    overflow: hidden; /* Oculta los corazones que salgan del área principal (solo los de la copa) */
+}
+
+/* Estilos para los corazones individuales (generados por JS) */
+.heart {
+    position: absolute;
+    width: 20px; /* Tamaño base del corazón */
+    height: 20px;
+    transform: rotate(-45deg);
+    border-radius: 50% 50% 0 0;
+    opacity: 0; /* Comienza invisible */
+    animation: heartBloom 0.8s forwards; /* Animación de aparición */
+    transform-origin: bottom center; /* Para la animación de crecimiento desde abajo */
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: inherit; /* Hereda el color */
+    border-radius: 50%;
+}
+
+.heart::before {
+    left: -50%;
+}
+
+.heart::after {
+    top: -50%;
+}
+
+/* Animación de los corazones al aparecer */
+@keyframes heartBloom {
+    0% {
+        transform: scale(0) rotate(-45deg);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) rotate(-45deg);
+        opacity: 1;
+    }
+}
+
+/* Animación para que el tronco surja desde abajo */
+@keyframes emergeTrunk {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Corazones desprendiéndose (ahora generados por JS) */
+.falling-heart {
+    --heart-size: 25px; /* Define el tamaño del corazón para usar en cálculos */
+    position: fixed; /* Posicionado fixed para caer por toda la pantalla */
+    width: var(--heart-size); 
+    height: var(--heart-size);
+    /* El color se establecerá dinámicamente en JS */
+    transform: rotate(-45deg); /* Forma de corazón */
+    border-radius: 50% 50% 0 0;
+    opacity: 0; /* Comienzan invisibles */
+    pointer-events: none; /* Asegura que no interfieran con clics */
+    animation: fallAndFade 10s infinite linear; /* Animación de caída constante y más rápida */
+    /* animation-delay se establecerá dinámicamente en JS */
+    /* top y left iniciales se establecerán dinámicamente en JS */
+    z-index: 10; /* Para que estén por encima de todo */
+}
+
+.falling-heart::before,
+.falling-heart::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: inherit; /* Hereda el color */
+    border-radius: 50%;
+}
+
+.falling-heart::before {
+    left: -50%;
+}
+
+.falling-heart::after {
+    top: -50%;
+}
+
+@keyframes fallAndFade {
+    0% {
+        /* Inicia en la posición definida por JS (superior derecha) */
+        transform: rotate(-45deg) scale(0.8) translateY(0) translateX(0); 
+        opacity: 0; /* Empieza invisible */
+    }
+    10% {
+        opacity: 1; /* Aparece al inicio del recorrido */
+    }
+    90% {
+        /* Se mueve diagonalmente hacia abajo y a la izquierda */
+        transform: rotate(-45deg) scale(0.6) translateY(100vh) translateX(-100vw); /* Se mueve 100vh hacia abajo y 100vw hacia la izquierda */
+        opacity: 1; /* Permanece visible durante la caída */
+    }
+    100% {
+        /* Sale de la pantalla por abajo y a la izquierda, se desvanece */
+        transform: rotate(-45deg) scale(0.5) translateY(120vh) translateX(-120vw); /* Se mueve aún más lejos para asegurar la desaparición */
+        opacity: 0; /* Desaparece completamente */
+    }
+}
+
+
+/* Responsividad para pantallas más pequeñas */
+@media (max-width: 768px) {
+    #welcome-overlay {
+        font-size: 1.8em;
+    }
+    .love-card {
+        flex-direction: column; /* Vuelve a columna en pantallas pequeñas */
+        align-items: center;
+        max-width: 95%;
+        padding: 20px;
+        overflow: visible; /* Asegura que los falling-heart salgan si son fixed */
+    }
+
+    .text-content {
+        padding-right: 0;
+        margin-bottom: 20px;
+        width: 100%; /* Ocupa todo el ancho */
+        text-align: center;
+    }
+
+    .tree-container {
+        margin-left: 0;
+        width: 280px;
+        height: 350px;
+    }
+
+    .trunk {
+        width: 50px;
+        height: 100px;
+    }
+
+    .leaves { /* Ajustar para el nuevo sistema de corazones en JS */
+        width: 250px;
+        height: 230px;
+        bottom: 90px;
+    }
+
+    .falling-heart {
+        /* Tamaño para móviles */
+        width: 15px;
+        height: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    #welcome-overlay {
+        font-size: 1.5em;
+    }
+    body {
+        font-size: 16px;
+    }
+    .tree-container {
+        width: 220px;
+        height: 280px;
+    }
+    .trunk {
+        width: 40px;
+        height: 80px;
+    }
+    .leaves { /* Ajustar para el nuevo sistema de corazones en JS */
+        width: 200px;
+        height: 180px;
+        bottom: 70px;
+    }
+    .falling-heart {
+        width: 10px;
+        height: 10px;
+    }
+}
